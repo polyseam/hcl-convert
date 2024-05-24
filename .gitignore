@@ -1,0 +1,4 @@
+dist/hcl-convert-linux
+dist/hcl-convert-mac
+dist/hcl-convert-win.exe
+.DS_Store

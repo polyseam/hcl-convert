@@ -1,0 +1,21 @@
+{
+  "name": "@polyseam/hcl-convert",
+  "version": "0.1.0",
+  "tasks": {
+    "start": "deno run -A main.ts",
+    "compile-win": "deno compile --allow-all --target x86_64-pc-windows-msvc --output dist/hcl-convert-win.exe main.ts",
+    "compile-linux": "deno compile --allow-all --target x86_64-unknown-linux-gnu --output dist/hcl-convert-linux main.ts",
+    "compile-mac": "deno compile --allow-all --target x86_64-apple-darwin --output dist/hcl-convert-mac main.ts",
+    "compile-all": "deno task compile-win && deno task compile-linux && deno task compile-mac",
+    "clean-dist": "rm dist/hcl-convert-mac dist/hcl-convert-linux dist/hcl-convert-win.exe || true",
+    "build": "deno lint && deno fmt && deno task clean-dist && deno task compile-all",
+    "build-linux": "deno lint && deno fmt && deno task clean-dist && deno task compile-linux"
+  },
+  "imports": {
+    "@cdktf/hcl2json": "npm:@cdktf/hcl2json@^0.20.7",
+    "@cliffy/command": "jsr:@cliffy/command@^1.0.0-rc.4",
+    "@std/fmt": "jsr:@std/fmt@^0.224.0",
+    "@std/path": "jsr:@std/path@^0.224.0",
+    "@std/yaml": "jsr:@std/yaml@^0.224.0"
+  }
+}
